@@ -113,12 +113,12 @@
 		<input type="hidden" name="editing2" id="editing2" value="0">
 		<input type="hidden" name="waste" id="waste" value="">
 	
-		Your yearly waste consumption is 
+<!--		Your yearly waste consumption is
 		<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 		tons of carbon
 		<br><br>
-		
-		Your waste consumption for this month produces 
+-->
+		Your yearly waste consumption produces
 		<div style="display:inline" name="waste2" id="waste2" value="0">0.0</div>
 		tons of carbon
 		<br><br>
@@ -178,7 +178,7 @@
 		if(compost == "c"){
 			waste = waste - 0.30;
 		}
-		waste = waste / 12;
+		//waste = waste / 12;
 		
 		jQuery('#waste').val(waste.toFixed(4));
 		document.getElementById("waste2").innerHTML = waste.toFixed(4);

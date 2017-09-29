@@ -121,15 +121,20 @@
 			<input type="hidden" name="train" id="train" value="<?php echo !empty($carbon_data) ? $travel['train'] : '' ?>">
 			<br>
 			
-			Your yearly train route emissions amount to  
+<!--			Your yearly train route emissions amount to
 			<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 			tons of carbon
 			<br><br>
-			
+-->
 			This train route produces
 			<div style="display:inline" name="train2" id="train2" value="0">0.0</div>
-			tons of carbon a month
+			tons of carbon a year
 			<br><br>
+
+            This train route is
+            <div style="display:inline" name="miles" id="miles" value="0">0.0</div>
+            miles
+            <br><br>
 			
 			<span> Enter the date for this emission </span>
 			<input type="text" name="emission_date" id="emission_date" value="<?php echo date("Y-m-d")?>">
@@ -220,7 +225,7 @@
 
 		total_distance = route_miles;
 		carbon_train_total = total_distance * 185 * 1.26 * 0.000001;
-		carbon_train_total = carbon_train_total / 12;
+		//carbon_train_total = carbon_train_total / 12;
 		
 		if(rt){
 			jQuery('#train_sy').val(1);
@@ -231,6 +236,7 @@
 		jQuery('#total_train_trip').val(total_distance.toFixed(4));
 		jQuery('#train').val(carbon_train_total.toFixed(4));
 		document.getElementById("train2").innerHTML = carbon_train_total.toFixed(4);
+        document.getElementById("miles").innerHTML = total_distance.toFixed(4);
 	}
 	
 	/* Function that creates the edit buttons for the user */

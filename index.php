@@ -27,7 +27,7 @@
 	<br>
 	<a href="/carbon-functions/Travel/emissions-bus.php" class="button">Bus</a> &nbsp;
 	<a href="/carbon-functions/Travel/emissions-car.php" class="button">Car</a> &nbsp;
-	<a href="/carbon-functions/Travel/emissions-motorcycle.php" class="button">Motorcyle</a> &nbsp;
+	<a href="/carbon-functions/Travel/emissions-motorcycle.php" class="button">Motorcycle</a> &nbsp;
 	<a href="/carbon-functions/Travel/emissions-plane.php" class="button">Plane</a> &nbsp;
 	<a href="/carbon-functions/Travel/emissions-train.php" class="button">Train</a> &nbsp;
 	<br><br>
@@ -36,7 +36,7 @@
 	<br>
 	<a href="/carbon-functions/Waste/emissions-waste.php" class="button">Waste</a> &nbsp;
 	<br><br>
-	
+<!--
 	<strong> TREE: </strong> 
 	<br>
 	<a href="/carbon-functions/Tree/add-trees.php" class="button">Add Trees</a> &nbsp;
@@ -48,6 +48,6 @@
 	<a href="/carbon-functions/Calculations/chart.php" class="button">Chart</a> &nbsp;
 	<a href="/carbon-functions/Calculations/rankings.php" class="button">Rankings</a> &nbsp;
 	<br><br>
-	
+-->
 	
 </body>

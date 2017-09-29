@@ -122,13 +122,14 @@
 		<input type="hidden" name="editing2" id="editing2" value="0">
 		<input type="hidden" name="food" id="food" value="">
 		
-		Your yearly food consumption is 
+<!--		Your yearly food consumption is
 		<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 		tons of carbon
 		<br><br>
+-->
 		
-		Your food consumption for this month produces 
-		<div style="display:inline" name="food2" id="food2" value="0">0.0750</div>
+		Your yearly food consumption is
+		<div style="display:inline" name="food2" id="food2" value="0">0.9</div>
 		tons of carbon
 		<br><br>
 		
@@ -203,7 +204,7 @@
 		var poultry = isNaN(parseFloat(document.getElementById('poultry').value)) ? 0.0:parseFloat(document.getElementById('poultry').value)*0.11*52;
 		
 		food = 0.9 + (lamb*3.92*0.001) + (beef*27*0.001) + (pork*12.1*0.001) + (fish*11.9*0.001) + (poultry*6.9*0.001);
-		food = food / 12;
+		//food = food / 12;
 		var food_records = <?php if(!empty($food_records)){echo json_encode($food_records);}else{echo "''";} ?>;
 		
 		jQuery('#food').val(food.toFixed(4));

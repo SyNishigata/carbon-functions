@@ -25,7 +25,7 @@
 
 This <?php echo $home_type;?> emission record produces
 <div style="display:inline" name="<?php echo $home_type;?>2" id="<?php echo $home_type;?>2" value="0">0.0</div>
-tons of carbon a month
+tons of carbon a year
 <br><br>
 
 <span> (Optional) Change the date for this emission </span>

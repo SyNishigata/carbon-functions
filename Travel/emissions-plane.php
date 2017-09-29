@@ -109,7 +109,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC7vypkjCVKS6DD_mAaRrMm0aljfF-EhQE&v=3.exp&libraries=places"></script>
 
-<form id="plane_form" action="http://localhost/carbon-functions/Travel/emissions-plane.php" method="post">
+<form id="plane_form" action="/Travel/emissions-plane.php" method="post">
 	<div class="form-group">
 		<!-- Plane Form -->
 		<span class="input-group-addon"><h3>Flight Routes</h3></span>
@@ -120,15 +120,20 @@
 			<input type="hidden" name="plane" id="plane" value="<?php echo !empty($carbon_data) ? $travel['plane'] : '' ?>">
 			<br>
 			
-			Your yearly plane route emissions amount to  
+<!--			Your total plane route emissions amount to
 			<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 			tons of carbon
 			<br><br>
-			
+-->
 			This plane route current produces
 			<div style="display:inline" name="plane2" id="plane2" value="0">0.0</div>
-			tons of carbon a month
+			tons of carbon a year
 			<br><br>
+
+            This plane route is
+            <div style="display:inline" name="miles" id="miles" value="0">0.0</div>
+            miles
+            <br><br>
 			
 			<span> Enter the date for this emission </span>
 			<input type="text" name="emission_date" id="emission_date" value="<?php echo date("Y-m-d")?>">
@@ -206,12 +211,14 @@
 		}
 		
 		total_distance = route_miles;
+		console.log(total_distance);
 		carbon_plane_total = total_distance.toFixed(4) * 223 * 2 * 0.000001;
-		carbon_plane_total = carbon_plane_total / 12;
+		//carbon_plane_total = carbon_plane_total / 12;
 	
 		jQuery('#total_plane_trip').val(total_distance.toFixed(4));
 		jQuery('#plane').val(carbon_plane_total.toFixed(4));
 		document.getElementById("plane2").innerHTML = carbon_plane_total.toFixed(4);
+        document.getElementById("miles").innerHTML = total_distance.toFixed(4);
 	}
 	
 	/* Function that creates the edit buttons for the user */

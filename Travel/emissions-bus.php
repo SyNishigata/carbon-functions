@@ -120,16 +120,21 @@
 				<input type="hidden" name="bus" id="bus" value="<?php echo !empty($carbon_data) ? $travel['bus'] : '' ?>">
 				<br>
 				
-				Your yearly bus route emissions amount to  
+<!--				Your yearly bus route emissions amount to
 				<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 				tons of carbon
 				<br><br>
-				
+-->
 				This bus route produces
 				<div style="display:inline" name="bus2" id="bus2" value="0">0.0</div>
-				tons of carbon a month
+				tons of carbon a year
 				<br><br>
-				
+
+                This bus route is
+                <div style="display:inline" name="miles" id="miles" value="0">0.0</div>
+				miles
+                <br><br>
+
 				<span> Enter the date for this emission </span>
 				<input type="text" name="emission_date" id="emission_date" value="<?php echo date("Y-m-d")?>">
 				<br><br>
@@ -218,7 +223,7 @@
 		
 		total_distance = route_miles;
 		carbon_bus_total = total_distance * 1.26 * 300 * 0.000001;
-		carbon_bus_total = carbon_bus_total / 12;
+		//carbon_bus_total = carbon_bus_total / 12;
 		
 		if(rt){
 			jQuery('#bschool').val(1);
@@ -229,6 +234,7 @@
 		jQuery('#total_bus_trip').val(total_distance.toFixed(4));
 		jQuery('#bus').val(carbon_bus_total.toFixed(4));
 		document.getElementById("bus2").innerHTML = carbon_bus_total.toFixed(4);
+        document.getElementById("miles").innerHTML = total_distance.toFixed(4);
 	}
 	
 	/* Function that creates the edit buttons for the user */

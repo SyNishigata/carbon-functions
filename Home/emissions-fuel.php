@@ -129,13 +129,13 @@
 				<input type="hidden" name="editing" id="editing" value="0">
 				<input type="hidden" name="editing2" id="editing2" value="0">
 				<input type="hidden" name="fuel" id="fuel" value="<?php echo !empty($carbon_data) ? $home['propane_fuel']:'';?>">                  
-					
-				Your yearly fuel consumption is 
+
+<!--                Your yearly fuel consumption is
 				<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 				tons of carbon
 				<br><br>
-				
-				Your fuel consumption for this month produces 
+-->
+				Your yearly fuel consumption produces
 				<div style="display:inline" name="fuel2" id="fuel2" value="0">0.0</div>
 				tons of carbon
 				<br><br>
@@ -204,7 +204,7 @@
 		
 		var household_members = isNaN(parseInt(document.getElementById('household').value)) ? 1:parseInt(document.getElementById('household').value);
 		total_carbon_propane_fuel = total_carbon_propane_fuel / household_members;
-		total_carbon_propane_fuel = total_carbon_propane_fuel / 12;
+		//total_carbon_propane_fuel = total_carbon_propane_fuel / 12;
 		
 		jQuery('#fuel').val(total_carbon_propane_fuel.toFixed(4));
 		document.getElementById("fuel2").innerHTML = total_carbon_propane_fuel.toFixed(4);

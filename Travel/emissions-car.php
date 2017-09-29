@@ -170,17 +170,17 @@
 
 				<div name="msg" id="msg"></div><br>
 				
-				Your cars produce  
+<!--				Your cars produce
 				<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 				tons of carbon yearly
 				<br><br>
-				
+-->
 				This car produces
 				<div style="display:inline" name="car2" id="car2" value="0">0.0</div>
-				tons of carbon a month
+				tons of carbon a year
 				<br><br>
 				
-				<span class="input-group-addon"> What is your car milage for this month? </span>
+				<span class="input-group-addon"> What is your car milage for this year? </span>
 				<div class="row">
 					<div class="small-7 columns">
 						<input type="text" name="car_miles" onchange="carbon_car()" id="car_miles" class="form-control"
@@ -366,8 +366,9 @@
 				}
 			}
 			
-			var monthly_car = total_car_carbon / 12;
+			//var monthly_car = total_car_carbon / 12;
 			var yearly_car = total_car_carbon;
+			var monthly_car = yearly_car;
 
 			jQuery('#car').val(monthly_car.toFixed(4));
 			document.getElementById("car2").innerHTML = monthly_car.toFixed(4);

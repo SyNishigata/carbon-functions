@@ -126,12 +126,12 @@
 				<input type="hidden" name="editing2" id="editing2" value="0">
 				<input type="hidden" name="gas" id="gas" value="<?php echo !empty($carbon_data) ? $home['gas']:'';?>">                  
 
-				Your yearly gas consumption is 
+<!--				Your yearly gas consumption is
 				<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 				tons of carbon
 				<br><br>
-				
-				Your gas consumption for this month produces 
+-->
+				Your yearly gas consumption produces
 				<div style="display:inline" name="gas2" id="gas2" value="0">0.0</div>
 				tons of carbon
 				<br><br>
@@ -196,7 +196,8 @@
 			natural_gas = (low_ngas + high_ngas) * 6;
 			jQuery("#ngas_usage").val(natural_gas.toFixed(4));
 		}
-		
+
+		/*  Old calculations
 		switch(units){
 			case 'mcf':
 				natural_gas = natural_gas * 0.1;
@@ -213,11 +214,30 @@
 			default:
 				break;
 		}
-		
-		total_carbon_natural_gas = (natural_gas / 100) * 54.7 * 1.14 * 0.000001;
+        total_carbon_natural_gas = (natural_gas / 100) * 54.7 * 1.14 * 0.000001;
+        */
+        switch(units){
+            case 'mcf':
+                natural_gas = (natural_gas * 54.7 * 1.14 * 0.000001) / 1000;
+                break;
+            case 'btu':
+                natural_gas = natural_gas * 5470 * 1.14 * 0.000001 * 102800;
+                break;
+            case 'therms':
+                natural_gas = natural_gas * 5470 * 1.14 * 0.000001;
+                break;
+            case 'kwh':
+                natural_gas = natural_gas * 5470 * 1.14 * 0.000001 * 29.31;
+                break;
+            default:  //default is 'ccf'
+                natural_gas = (natural_gas * 54.7 * 1.14 * 0.000001) / 100;
+                break;
+        }
+        total_carbon_natural_gas = natural_gas;
+
 		var household_members = isNaN(parseInt(document.getElementById('household').value)) ? 1:parseInt(document.getElementById('household').value);
 		total_carbon_natural_gas = total_carbon_natural_gas / household_members;
-		total_carbon_natural_gas = total_carbon_natural_gas / 12;
+		//total_carbon_natural_gas = total_carbon_natural_gas / 12;
 		
 		jQuery('#gas').val(total_carbon_natural_gas.toFixed(4));
 		document.getElementById("gas2").innerHTML = total_carbon_natural_gas.toFixed(4);

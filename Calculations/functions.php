@@ -171,7 +171,7 @@
 		$emission_date = substr($value['date_data_entry'], 0, 7);
 		$prev_date = $emission_date;
 		$current_date = date("Y-m");
-		$records = $all_records[$key]; 
+		$records = $all_records[$key];
 		$timelapse = 11;
 		$graph_points = array();
 
@@ -193,34 +193,34 @@
 				$timelapse = 0;
 			}
 		}
-		
+
 		/* Store dates of each record into array: $record_dates */
 		for($i = 0; $i < sizeof($records); $i++){
 			$record_dates[] = $records[$i]['date_data_entry'];
 		}
-		
+
 //		echo "Start Item: $key <br>";
 //		echo $emission_date . ": " . $yearly_co2 . " start date <br>";
-		
+
 		/* loop over the past 11 (or timelapse) months from emission date */
 		for ($i = 0; $i < $timelapse; $i++){
 			$prev_date = strtotime(date("Y-m", strtotime($prev_date)) . " -1 month");
 			$prev_date = date("Y-m", $prev_date);
 			$match = false;
-			
+
 			//loop over all_records checking if a record with that month/year exists
 			for($j = 0; $j < sizeof($records); $j++){
 				if(strpos($records[$j]['date_data_entry'], $prev_date) !== false){
 					$match = true;
 					$yearly_co2 += $records[$j]['monthly_co2_emissions'];
-					
+
 					//graph plot
 					$graph_points[date("Y-m", strtotime($prev_date))] = $records[$j]['monthly_co2_emissions'];
-					
+
 //					echo $prev_date . ": " . $yearly_co2 . " match <br>";
 				}
 			}
-			
+
 			//there was no record for that specific month/year
 			if($match == false){
 				unset($interval);
@@ -231,13 +231,13 @@
 				asort($interval);
 				$closest = key($interval);
 				$yearly_co2 += $records[$closest]['monthly_co2_emissions'];
-				
+
 				//graph plot
 				$graph_points[date("Y-m", strtotime($prev_date))] = $records[$closest]['monthly_co2_emissions'];
-				
+
 //				echo $prev_date . ": " . $yearly_co2 . " no match, closest=$record_dates[$closest] <br>";
 			}
-			
+
 		}
 //		echo "End Item: $key <br><br>";
 
@@ -245,7 +245,7 @@
 		if(!is_null($value['date_data_entry'])){
 			$graph_points[date("Y-m", strtotime($value['date_data_entry']))] = $value['monthly_co2_emissions'];
 		}
-		
+
 	/* START: Return array[$yearly_co2, $sequestered_co2] */
 		$return_values = array($yearly_co2, $graph_points);
 		return $return_values;

@@ -127,12 +127,12 @@
 				<input type="hidden" name="editing2" id="editing2" value="0">
 				<input type="hidden" name="water" id="water" value="<?php echo !empty($carbon_data) ? $home['water']:'';?>">   
 				
-				Your yearly water consumption is 
+<!--				Your yearly water consumption is
 				<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 				tons of carbon
 				<br><br>
-				
-				Your water consumption for this month produces 
+-->
+				Your yearly water consumption produces
 				<div style="display:inline" name="water2" id="water2" value="0">0.0</div>
 				tons of carbon
 				<br><br>
@@ -192,17 +192,23 @@
 		}
 		
 		switch(units){
-			case 'tgals':
+            case 'tgals':
+                /* Old Calculations
 				total_carbon_water = water_usage * 1000 * 4.082 * 0.000001;
+				*/
+                total_carbon_water = (water_usage * 11707 * 0.000001 * 1000) / 365;
 				break;
 			default:
+			    /* Old Calculations
 				total_carbon_water = water_usage * 4.082 * 0.000001;
+				*/
+                total_carbon_water = (water_usage * 11707 * 0.000001) / 365;
 				break;
 		}
 
 		var household_members = isNaN(parseInt(document.getElementById('household').value)) ? 1:parseInt(document.getElementById('household').value);
 		total_carbon_water = total_carbon_water / household_members;
-		total_carbon_water = total_carbon_water / 12;
+		//total_carbon_water = total_carbon_water / 12;
 		
 		jQuery('#water').val(total_carbon_water.toFixed(4));
 		document.getElementById("water2").innerHTML = total_carbon_water.toFixed(4);

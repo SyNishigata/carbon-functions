@@ -157,14 +157,14 @@
 				
 				<div name="msg" id="msg"></div><br>
 				
-				Your motorcycles produce  
+<!--				Your motorcycles produce
 				<div style="display:inline"> <?php echo $yearly_co2; ?></div>
 				tons of carbon
 				<br><br>
-				
+-->
 				This motorcycle produces
 				<div style="display:inline" name="mcycl2" id="mcycl2" value="0">0.0</div>
-				tons of carbon a month
+				tons of carbon a year
 				<br><br>
 				
 				<span class="input-group-addon"> What is your total year&#39;s motorcycle mileage? </span>
@@ -273,7 +273,7 @@
 					break;
 			}
 			
-			total_mcycl_carbon = total_mcycl_carbon / 12;
+			//total_mcycl_carbon = total_mcycl_carbon / 12;
 
 			jQuery('#mcycl').val(total_mcycl_carbon.toFixed(4));
 			document.getElementById("mcycl2").innerHTML = total_mcycl_carbon.toFixed(4);
